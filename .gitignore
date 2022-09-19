@@ -1,4 +1,6 @@
 .DS_Store
-.vscode
+.vscode/
 node_modules/
 .env
+dist/
+.parcel-cache/
