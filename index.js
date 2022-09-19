@@ -14,7 +14,9 @@ app.use(
 		secret: process.env.COOKIE_SECRET,
 		cookie: {
 			maxAge: 30 * 24 * 60 * 60 * 1000 // 30days
-		}
+		},
+		resave: false,
+		saveUninitialized: true
 	})
 )
 
@@ -33,7 +35,7 @@ app.get('/api/logout', (req, res) => {
 })
 
 app.get('/api/current_user', (req, res) => {
-	res.send(req.user)
+	res.send(req.session)
 })
 
 app.listen(process.env.PORT, () => {
