@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
-import AuthProvider from './context/auth/auth.provider'
+import GlobalProvider from './context/global/global.provider'
 import Header from './components/Header'
 import Landing from './components/Landing'
 
@@ -8,7 +8,7 @@ const SurveyNew = () => <div>SurveyNew</div>
 
 const App = () => {
 	return (
-		<AuthProvider>
+		<GlobalProvider>
 			<BrowserRouter>
 				<Header />
 				<Routes>
@@ -17,7 +17,7 @@ const App = () => {
 					<Route path='/surveys/new' element={<SurveyNew />}/>
 				</Routes>
 			</BrowserRouter>
-		</AuthProvider>
+		</GlobalProvider>
 	)
 }
 

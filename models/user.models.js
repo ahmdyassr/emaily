@@ -6,6 +6,10 @@ const userSchema = new Schema({
 		type: String,
 		unique: true
 	},
+	credits: {
+		type: Number,
+		default: 0
+	}
 })
 
 const User = mongoose.model('user', userSchema)

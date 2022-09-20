@@ -1,28 +1,29 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const passport = require('passport')
-const session = require('express-session')
+const cookieSession = require('cookie-session')
+const bodyParser = require('body-parser')
 const authRouter = require('./routes/auth.routes')
+const billingRouter = require('./routes/billing.routes')
 const app = express()
 
 mongoose.connect(process.env.MONGO_URI, () => {
 	console.log('🔑 Connected to Database')
 })
 
+app.use(bodyParser.json())
 app.use(
-	session({
-		secret: process.env.COOKIE_SECRET,
-		cookie: {
-			maxAge: 30 * 24 * 60 * 60 * 1000 // 30days
-		},
-		resave: false,
-		saveUninitialized: true
+	cookieSession({
+		keys: [process.env.COOKIE_SECRET],
+		maxAge: 30 * 24 * 60 * 60 * 1000
 	})
 )
 
+app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/auth', authRouter)
+app.use('/api/stripe', billingRouter)
 
 app.get('/api/logout', (req, res) => {
 	req.logout((e) => {

@@ -1,9 +1,10 @@
 import {useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import {useAuthContext} from '../context/auth/auth.context'
+import {useGlobalContext} from '../context/global/global.context'
+import Payment from './Payment'
 
 const Header = () => {
-	const {isAuth, fetchUser} = useAuthContext()
+	const {isAuth, fetchUser} = useGlobalContext()
 
 	useEffect(() => {
 		fetchUser()
@@ -16,7 +17,9 @@ const Header = () => {
 			}
 
 			case true: {
-				return 	<a className="header__button" href="/api/logout">Logout</a>
+				return 	(
+					<><Payment /><a className="header__button" href="/api/logout">Logout</a></>
+				)
 			}
 
 			case false: {

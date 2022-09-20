@@ -1,6 +1,6 @@
-import {FETCH_USER} from './auth.actions'
+import {FETCH_USER} from './global.actions'
 
-const authReducer = (state, action) => {
+const globalReducer = (state, action) => {
 	switch (action.type) {
 		case FETCH_USER: {
 			return {...state,
@@ -13,4 +13,4 @@ const authReducer = (state, action) => {
 	}
 }
 
-export default authReducer
+export default globalReducer
