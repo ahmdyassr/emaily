@@ -30,7 +30,7 @@ app.get('/api/logout', (req, res) => {
 			return next(e)
 		}
 
-		res.send(req.user)
+		res.redirect('/')
 	})
 })
 

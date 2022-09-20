@@ -1,7 +1,5 @@
-const INCREASE = 'INCREASE'
-const DECREASE = 'DECREASE'
+const FETCH_USER = 'FETCH_USER'
 
 export {
-	INCREASE,
-	DECREASE
+	FETCH_USER
 }

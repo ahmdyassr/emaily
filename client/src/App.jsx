@@ -1,16 +1,14 @@
-import AuthState from './context/auth/auth.state'
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
+import AuthProvider from './context/auth/auth.provider'
 import Header from './components/Header'
-import Button from './components/Button'
-import Card from './components/Card'
+import Landing from './components/Landing'
 
 const Dashboard = () => <div>Dashboard</div>
 const SurveyNew = () => <div>SurveyNew</div>
-const Landing = () => <div>Landing</div>
 
 const App = () => {
 	return (
-		<>
+		<AuthProvider>
 			<BrowserRouter>
 				<Header />
 				<Routes>
@@ -19,12 +17,7 @@ const App = () => {
 					<Route path='/surveys/new' element={<SurveyNew />}/>
 				</Routes>
 			</BrowserRouter>
-		</>
-		// <AuthState>
-		// 	<Card />
-		// 	<Button type="add" label="Add" />
-		// 	<Button type="decrease" label="Decrease" />
-		// </AuthState>
+		</AuthProvider>
 	)
 }
 
