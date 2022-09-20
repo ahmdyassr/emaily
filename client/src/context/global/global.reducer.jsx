@@ -4,7 +4,8 @@ const globalReducer = (state, action) => {
 	switch (action.type) {
 		case FETCH_USER: {
 			return {...state,
-				isAuth: action.payload
+				isAuth: action.payload.isAuth,
+				user: action.payload.user
 			}
 		}
 		default: {

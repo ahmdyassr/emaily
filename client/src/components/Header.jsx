@@ -4,7 +4,7 @@ import {useGlobalContext} from '../context/global/global.context'
 import Payment from './Payment'
 
 const Header = () => {
-	const {isAuth, fetchUser} = useGlobalContext()
+	const {isAuth, user, fetchUser} = useGlobalContext()
 
 	useEffect(() => {
 		fetchUser()
@@ -18,7 +18,11 @@ const Header = () => {
 
 			case true: {
 				return 	(
-					<><Payment /><a className="header__button" href="/api/logout">Logout</a></>
+					<>
+						<Payment />
+						<span className="header__credits">{ user?.credits } Credits</span>
+						<a className="header__button" href="/api/logout">Logout</a>
+					</>
 				)
 			}
 

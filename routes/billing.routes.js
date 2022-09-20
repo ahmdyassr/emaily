@@ -1,14 +1,11 @@
 const express = require('express')
 const stripe = require('stripe')(process.env.STRIPE_SECRET)
 const User = require('../models/user.models')
+const auth = require('../middlewares/auth.middlewares')
 const router = express.Router()
 
 router
-	.post('/', async (req, res) => {
-		if (!req.user) {
-			return res.status(401).json({ error: 'You must login!' })
-		}
-
+	.post('/', auth, async (req, res) => {
 		const charge = await stripe.charges.create({
 			amount: 500,
 			currency: 'usd',
@@ -21,6 +18,5 @@ router
 
 		res.json(user)
 	})
-
 
 module.exports = router 

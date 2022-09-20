@@ -9,7 +9,8 @@ import axios from 'axios'
 
 const initialState = {
 	isAuth: null,
-	token: null
+	token: null,
+	user: {}
 }
 
 const GlobalProvider = ({children}) => {
@@ -18,17 +19,23 @@ const GlobalProvider = ({children}) => {
 	const fetchUser = async () => {
 		try {
 			const response = await axios.get('/api/current_user') 
-			const user = response?.data?.passport?.user
+			const user = response?.data
 			
 			if (user) {
 				dispatch({
 					type: FETCH_USER,
-					payload: true
+					payload: {
+						isAuth: true,
+						user
+					}
 				})
+
 			} else {
 				dispatch({
 					type: FETCH_USER,
-					payload: false
+					payload: {
+						isAuth: false
+					}
 				})
 			}
 			
