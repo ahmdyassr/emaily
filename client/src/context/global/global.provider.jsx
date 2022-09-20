@@ -47,10 +47,13 @@ const GlobalProvider = ({children}) => {
 	const handleToken = async (token) => {
 		try {
 			const response = await axios.post('/api/stripe', token)
-			
+			const user = response?.data
+
 			dispatch({
-				type: FETCH_STRIPE_TOKEN,
-				payload: response?.data
+				type: FETCH_USER,
+				payload: {
+					user
+				}
 			})
 		} catch (e) {
 			console.log(e)
