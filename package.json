@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "nodemon -r dotenv/config --ignore client/ index.js",
 		"start": "node index.js",
-		"build": "cd client && yarn build"
+		"build": "cd client && yarn run build"
 	},
 	"dependencies": {
 		"body-parser": "^1.20.0",
