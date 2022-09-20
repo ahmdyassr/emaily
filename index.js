@@ -27,13 +27,8 @@ app.use('/auth', authRouter)
 app.use('/api/stripe', billingRouter)
 
 app.get('/api/logout', (req, res) => {
-	req.logout((e) => {
-		if (e) {
-			return next(e)
-		}
-
-		res.redirect('/')
-	})
+	req.logOut()
+	res.redirect('/')
 })
 
 app.get('/api/current_user', (req, res) => {
