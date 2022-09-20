@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const mongoose = require('mongoose')
 const passport = require('passport')
@@ -42,6 +43,17 @@ app.get('/api/current_user', (req, res) => {
 app.get('/', (req, res) => {
 	res.send('Hello World!')
 })
+
+if (process.env.NODE_ENV === 'production') {
+
+	app.use(express.static(path.resolve(__dirname, './client/dist')))
+	// Express to serve production assets
+
+
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, './client/dist/index.html'))
+	})
+}
 
 app.listen(process.env.PORT, () => {
 	console.log(`Server is listening on port ${process.env.PORT}`)
