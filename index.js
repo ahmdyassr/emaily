@@ -6,6 +6,7 @@ const cookieSession = require('cookie-session')
 const bodyParser = require('body-parser')
 const authRouter = require('./routes/auth.routes')
 const billingRouter = require('./routes/billing.routes')
+const surveyRouter = require('./routes/survey.routes')
 const app = express()
 
 mongoose.connect(process.env.MONGO_URI, () => {
@@ -25,6 +26,7 @@ app.use(passport.session())
 
 app.use('/auth', authRouter)
 app.use('/api/stripe', billingRouter)
+app.use('/api/surveys', surveyRouter)
 
 app.get('/api/logout', (req, res) => {
 	req.logOut()

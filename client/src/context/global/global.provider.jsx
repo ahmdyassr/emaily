@@ -2,8 +2,7 @@ import {useReducer} from 'react'
 import {GlobalContext} from './global.context'
 import globalReducer from './global.reducer'
 import {
-	FETCH_USER,
-	FETCH_STRIPE_TOKEN
+	FETCH_USER
 } from './global.actions'
 import axios from 'axios'
 
