@@ -1,3 +1,3 @@
 ### Emaily
 
-A NodeJS App based on Steve Grinder's course
+A NodeJS, react App based on Steve Grinder's course
